@@ -9,7 +9,7 @@ public with sharing class MetaDataAPIExamples {
         customObject.label = objectName;
         customObject.pluralLabel = objectName+'s';
         customObject.nameField = new MetadataService.CustomField();
-        customObject.nameField.type_x = 'Text';
+        customObject.nameField.type_x = 'Text';   
         customObject.nameField.label = 'Test Record';
         customObject.deploymentStatus = 'Deployed';
         customObject.sharingModel = 'ReadWrite';
