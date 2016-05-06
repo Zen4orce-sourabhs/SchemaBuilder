@@ -126,9 +126,10 @@ public class SchemaBuilder {
        // 	customField1.maskType='All';
             customField1.displayLocationInDecimal=true;	    
               
+           
         	
         	//customField1.visibleLines = 3;
-   			//customField1.precision = 8;
+   			//customField1.precision = 8;     
      		//customField1.scale = 2;
         
         	MetadataService.MetadataPort service = createService();    
