@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableHistory>true</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>PrefAddress__c</fullName>
+        <label>Address</label>
+        <referenceTo>hed__Address__c</referenceTo>
+        <relationshipLabel>TestAdds1</relationshipLabel>
+        <relationshipName>TestAdds1</relationshipName>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>billing_street__c</fullName>
+        <formula>PrefAddress__r.hed__MailingStreet__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>billing street</label>
+        <type>Text</type>
+    </fields>
+    <label>TestAdd1</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>TestAdd1 Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>TestAdds1</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>

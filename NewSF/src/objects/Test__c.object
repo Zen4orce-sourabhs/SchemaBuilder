@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>Deployed</deploymentStatus>
+    <fields>
+        <fullName>LongTextAreaField__c</fullName>
+        <label>Long Text Area Field</label>
+        <length>32000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Test</label>
+    <nameField>
+        <label>Test Record</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Tests</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+    <webLinks>
+        <fullName>googleButton</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <hasScrollbars>true</hasScrollbars>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>google</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <url>http://www.google.com</url>
+        <width>600</width>
+    </webLinks>
+</CustomObject>
