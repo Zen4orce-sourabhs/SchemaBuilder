@@ -54,6 +54,24 @@ public with sharing class MetadataServiceExamples
         handleSaveResults(results[0]);
     }
 
+  public static void createMasterDetailField()
+    {
+        MetadataService.MetadataPort service = createService();
+        MetadataService.CustomField customField = new MetadataService.CustomField();
+        customField.fullName = 'Test__c.MasterDetail__c';
+        customField.label = 'MasterDetail Field';
+        customField.type_x = 'MasterDetail';
+        customField.relationshipLabel = 'TestsMD';
+        customField.relationshipName = 'TestsMD';
+        customField.referenceTo = 'Contact';
+        List<MetadataService.SaveResult> results =
+            service.createMetadata(
+                new MetadataService.Metadata[] { customField });
+        handleSaveResults(results[0]);
+    }
+
+
+
     public static void createExternalField()
     {
         MetadataService.MetadataPort service = createService();
@@ -250,6 +268,7 @@ public with sharing class MetadataServiceExamples
     {
         MetadataService.MetadataPort service = createService();
         MetadataService.WebLink webLink = new MetadataService.WebLink();
+        
         webLink.fullName = 'Test__c.googleButton';
         webLink.availability = 'online';
         webLink.displayType = 'link';
@@ -268,6 +287,7 @@ public with sharing class MetadataServiceExamples
         webLink.showsStatus = false;
         webLink.url = 'http://www.google.com';
         webLink.width = 600;
+        
         List<MetadataService.SaveResult> results =
             service.createMetadata(
                 new MetadataService.Metadata[] { webLink });
@@ -667,6 +687,8 @@ public with sharing class MetadataServiceExamples
                 new MetadataService.Metadata[] { customSite });
         handleSaveResults(results[0]);
     }
+
+
 
     public static void createDetailObject()
     {
