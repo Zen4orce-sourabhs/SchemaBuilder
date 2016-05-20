@@ -7,16 +7,17 @@ public class SchemaBuilder {
 	String pickListValues,String fVisibleLines,String fExternalId,
 	String fUnique,String Sorted, String fRelationShipName,String fReferenceTo)
 		{
+			
+			
 			MetadataService.CustomField customField1 = new MetadataService.CustomField();
 			
 			// Ftype = Date,Phone,Email,Autonumber,Datetime
         	customField1.fullName = oName+'.'+fAPIName;
         	customField1.type_x = fType;
-        	customField1.label = fLabel;       	
+        	customField1.label = fLabel; 
+              	
             customField1.required= Boolean.valueOf(fReq) ;
-            
         	customField1.description= fDescription;
-        	
         	customField1.inlineHelpText = fHelpText;
         	customField1.externalId = Boolean.valueOf(fExternalId);
         	customField1.unique = Boolean.valueOf(fUnique);
@@ -52,6 +53,17 @@ public class SchemaBuilder {
         		customField1.maskChar='X';
         		customField1.maskType='All';
         		customField1.length = Integer.valueOf(fLength);
+        	}
+        	else if (fType=='Location')
+        	{
+        		 customField1.displayLocationInDecimal=true;	         
+     			 customField1.scale = 2;
+        	}
+        	else if (fType=='Summary')
+        	{
+        		customField1.summarizedField='test__c.EmpSalary__c';//test__c
+           		customField1.summaryForeignKey='test__c.mdetail__c';
+            	customField1.summaryOperation='count';
         	}
         	else if (fType=='Picklist' || fType=='MultiselectPicklist')
         	{
@@ -124,13 +136,13 @@ public class SchemaBuilder {
         //	customField1.length = 20;  // mand for encryted mac l = 250
         //	customField1.maskChar='X';
        // 	customField1.maskType='All';
-            customField1.displayLocationInDecimal=true;	    
+           customField1.displayLocationInDecimal=true;	    
               
            
         	
         	//customField1.visibleLines = 3;
    			//customField1.precision = 8;     
-     		//customField1.scale = 2;
+     		customField1.scale = 2;
         
         	MetadataService.MetadataPort service = createService();    
          	List<MetadataService.SaveResult> results =

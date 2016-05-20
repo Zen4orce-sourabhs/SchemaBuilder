@@ -9,7 +9,7 @@ public with sharing class MetaDataAPIExamples {
         customObject.label = objectName;
         customObject.pluralLabel = objectName+'s';
         customObject.nameField = new MetadataService.CustomField();
-        customObject.nameField.type_x = 'Text';   
+        customObject.nameField.type_x = 'Text';    
         customObject.nameField.label = 'Test Record';
         customObject.deploymentStatus = 'Deployed';
         customObject.sharingModel = 'ReadWrite';
@@ -56,6 +56,59 @@ public with sharing class MetaDataAPIExamples {
         handleSaveResults(results[0]);
     }
 
+       
+  public static void getbuttons()
+    {
+    /*	 MetadataService.MetadataPort service = createService();
+     MetadataService.Layout layout =
+            (MetadataService.Layout) service.readMetadata('Layout',
+                new String[] { 'Test__c-Test Layout' }).getRecords()[0];
+      */          
+                
+                 MetadataService.MetadataPort service = createService();
+        List<MetadataService.ListMetadataQuery> queries = new List<MetadataService.ListMetadataQuery>();
+
+       
+        MetadataService.ListMetadataQuery queryCustomField = new MetadataService.ListMetadataQuery();
+        queryCustomField.type_x = 'Layout';
+        queries.add(queryCustomField);
+       
+        MetadataService.FileProperties[] fileProperties = service.listMetadata(queries, 25);
+        for(MetadataService.FileProperties fileProperty : fileProperties)
+            System.debug(fileProperty);
+                
+                
+                
+                
+    }
+    
+    	public static void createotherFields(String oName,String fLabel,String fAPIName,String fType)
+		{
+			MetadataService.CustomField customField1 = new MetadataService.CustomField();
+        	customField1.fullName = 'test__c.'+fAPIName;  
+        	customField1.label = fLabel;
+        	customField1.type_x = fType;
+        	
+        	customField1.length = 300; // min 256
+        	
+        	
+        	// for auto number 
+        //	customField1.displayFormat='sb-{000}';
+        
+         // For Rich text area 
+        //	customField1.length = 300; // min 256
+       // 	customField1.visibleLines=10; // min 10
+        	
+         //  customField1.summarizedField='test__c.EmpSalary__c';//test__c
+         //  customField1.summaryForeignKey='test__c.mdetail__c';
+         //   customField1.summaryOperation='count';
+        	MetadataService.MetadataPort service = createService();    
+         	List<MetadataService.SaveResult> results =
+            service.createMetadata(
+                new MetadataService.Metadata[] { customField1 });
+        	handleSaveResults(results[0]);
+	}
+    
     
   public static void createWebLink()
     {
@@ -255,7 +308,7 @@ public with sharing class MetaDataAPIExamples {
        
         MetadataService.ListMetadataQuery queryCustomField = new MetadataService.ListMetadataQuery();
         System.debug('types 0'+queryCustomField.type_x);
-        queryCustomField.type_x = 'Workflow';
+        queryCustomField.type_x = 'CustomField';
         System.debug('types'+queryCustomField.type_x);
         queries.add(queryCustomField);
         
